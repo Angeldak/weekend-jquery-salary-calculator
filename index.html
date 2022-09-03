@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <title>jQuery Weekend Problem</title>
+</head>
+
+<body>
+    <header>
+        <h1>Salary Calculator</h1>
+    </header>
+    <div class="container">
+        <section class="row top">
+            <h3>Add Employee</h3>
+            <div class="inputFlex">
+                <input id="inputFirstName" type="text" placeholder="Enter First Name">
+                <input id="inputLastName" type="text" placeholder="Enter Last Name">
+                <input id="inputEmployeeID" type="number" placeholder="Enter Employee ID">
+                <input id="inputTitle" type="text" placeholder="Enter Title">
+                <input id="inputAnnualSalary" type="number" placeholder="Enter Annual Salary">
+                <button id="addEmployeeBtn">Submit</button>
+            </div>
+        </section>
+        <section class="row">
+            <h3>Employees</h3>
+            <div class="holder">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>First Name</td>
+                            <td>Last Name</td>
+                            <td>ID</td>
+                            <td>Title</td>
+                            <td>Annual Salary</td>
+                            <td>Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+
+                    </tbody>
+                    <tfoot>
+                        <tr id="tableFoot">
+                            <td colspan="5">Total Monthly: </td>
+                            <td><span id="costMonthly">0</span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+        <footer class="row footer"></footer>
+    </div>
+</body>
+
+</html>
