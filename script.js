@@ -4,6 +4,14 @@ $(onReady)
 let employeeList = [];
 let isAdmin = false;
 
+// fortmatter for dollar values
+const formatCur = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+})
+
 // Begin function to append employeeList to the DOM
 function appendDom() {
     $("#tableBody").empty();
@@ -14,18 +22,19 @@ function appendDom() {
             <td>${employee.lastName}</td>
             <td>${employee.employeeID}</td>
             <td>${employee.title}</td>
-            <td>${employee.annualSalary}</td>
+            <td>${formatCur.format(employee.annualSalary)}</td>
             <td><button class="deleteBtn">Delete</button></td>
         </tr>
         `);
     }
-    $("#costMonthly").text(`${calculateTotalMonthly(employeeList)}`);
+    let currentMonthly = calculateTotalMonthly(employeeList);
+    $("#costMonthly").text(`${formatCur.format(currentMonthly)}`);
 
     // Apply red styling to monthly if exceeds 20,000
-    if (Number($("#costMonthly").text()) > 20000) {
-        $("#costMonthly").addClass("redBackground");
+    if (currentMonthly > 20000) {
+        $("#monthlyBackground").addClass("redBackground");
     } else {
-        $("#costMonthly").removeClass("redBackground");
+        $("#monthlyBackground").removeClass("redBackground");
     }
     checkAdmin();
 }  // end appendDom
@@ -34,14 +43,18 @@ function adminFunctions() {
     if ($("#adminBtn").hasClass("left")) {
         isAdmin = false;
         $("#adminBtn").animate({ left: "0%" }, "fast");
-        $("#adminBtn").removeClass("left");
-        $("#adminBtnHolder").css("background-color", "white");
+        setTimeout(function () {
+            $("#adminBtn").removeClass("left");
+            $("#adminBtnHolder").css("background-color", "white");
+        }, 225);
         checkAdmin();
     } else {
         isAdmin = true;
         $("#adminBtn").animate({ left: "50%" }, "fast");
-        $("#adminBtn").addClass("left");
-        $("#adminBtnHolder").css("background-color", "green");
+        setTimeout(function () {
+            $("#adminBtn").addClass("left");
+            $("#adminBtnHolder").css("background-color", "green");
+        }, 225);
         checkAdmin();
     }
 }  // end adminFunctions

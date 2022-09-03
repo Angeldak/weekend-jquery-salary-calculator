@@ -77,9 +77,6 @@ tbody tr:nth-child(even) {
     left: 50%;
 }
 
-.redBackground {
-    background-color: red;
-}
 
 .row {
     width: 60%;
@@ -89,7 +86,6 @@ tbody tr:nth-child(even) {
 }
 
 #tableFoot {
-    background-color: rgb(15, 161, 251);
     text-align: right;
 }
 
@@ -132,4 +128,12 @@ tbody tr:nth-child(even) {
     padding-right: 13px;
     padding-bottom: 10px;
     padding-top: 5px;
+}
+
+.redBackground {
+    background-color: red;
+}
+
+.darkBackground {
+    background-color: rgb(15, 161, 251);
 }
