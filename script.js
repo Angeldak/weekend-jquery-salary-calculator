@@ -2,6 +2,7 @@
 $(onReady)
 
 let employeeList = [];
+let isAdmin = false;
 
 // Begin function to append employeeList to the DOM
 function appendDom() {
@@ -26,7 +27,24 @@ function appendDom() {
     } else {
         $("#costMonthly").removeClass("redBackground");
     }
+    checkAdmin();
 }  // end appendDom
+
+function adminFunctions() {
+    if ($("#adminBtn").hasClass("left")) {
+        isAdmin = false;
+        $("#adminBtn").animate({ left: "0%" }, "fast");
+        $("#adminBtn").removeClass("left");
+        $("#adminBtnHolder").css("background-color", "white");
+        checkAdmin();
+    } else {
+        isAdmin = true;
+        $("#adminBtn").animate({ left: "50%" }, "fast");
+        $("#adminBtn").addClass("left");
+        $("#adminBtnHolder").css("background-color", "green");
+        checkAdmin();
+    }
+}  // end adminFunctions
 
 // Begin function to calculate monthly payroll cost
 function calculateTotalMonthly(array) {
@@ -36,6 +54,16 @@ function calculateTotalMonthly(array) {
     }
     return sum.toFixed(2);
 }  // end calculateTotalMonthly
+
+function checkAdmin() {
+    if (isAdmin === true) {
+        $(".deleteBtn").show()
+    } else if (isAdmin === false) {
+        $(".deleteBtn").hide()
+    } else {
+        console.log("Admin error, should never see this!");
+    }
+}  // checkAdmin
 
 // Begin function to collect and return employee info inputs
 function collectEmployeeInfo() {
@@ -112,6 +140,7 @@ function eventHandlers() {
         }
     });
     $("#tableBody").on("click", ".deleteBtn", deleteEmployee);
+    $("#adminBtn").on("click", adminFunctions);
 }  // end eventHandlers
 
 // jQuery onReady

@@ -6,6 +6,11 @@ body {
     font-size: 1.25rem;
 }
 
+button {
+    margin: 0;
+    vertical-align: text-top;
+}
+
 header {
     background-color: rgb(15, 161, 251);
     text-align: center;
@@ -68,6 +73,10 @@ tbody tr:nth-child(even) {
     justify-content: center;
 }
 
+.left {
+    left: 50%;
+}
+
 .redBackground {
     background-color: red;
 }
@@ -110,13 +119,17 @@ tbody tr:nth-child(even) {
 }
 
 #adminBtnText {
-   position: relative;
-   top: 5%;
-   left: 15%;
+    position: relative;
+    top: 5%;
+    left: 15%;
 }
 
 #adminHolder {
     position: absolute;
     top: 0%;
     left: 0%;
+    border: 1px solid white;
+    padding-right: 13px;
+    padding-bottom: 10px;
+    padding-top: 5px;
 }
