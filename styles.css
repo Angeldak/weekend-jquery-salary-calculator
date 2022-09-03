@@ -83,3 +83,40 @@ tbody tr:nth-child(even) {
     background-color: rgb(15, 161, 251);
     text-align: right;
 }
+
+#adminBtnHolder {
+    position: relative;
+    top: 5%;
+    left: 10%;
+    background-color: white;
+    height: 25px;
+    width: 50px;
+    border-radius: 50px;
+}
+
+#adminBtn {
+    position: relative;
+    top: 0;
+    left: 0%;
+    background-color: lightskyblue;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    font-size: .90rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+#adminBtnText {
+   position: relative;
+   top: 5%;
+   left: 15%;
+}
+
+#adminHolder {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}

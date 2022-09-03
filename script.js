@@ -104,14 +104,14 @@ function processEmployeeInfo() {
 
 // Begin function to attach event handlers
 function eventHandlers() {
-    $("#addEmployeeBtn").on("click", processEmployeeInfo)
+    $("#addEmployeeBtn").on("click", processEmployeeInfo);
     $("html").on("keypress", (event) => {
         if (event.which === 13) {
             $("#inputFirstName").focus();
             return processEmployeeInfo();
         }
     });
-    $("#tableBody").on("click", ".deleteBtn", deleteEmployee)
+    $("#tableBody").on("click", ".deleteBtn", deleteEmployee);
 }  // end eventHandlers
 
 // jQuery onReady
