@@ -130,10 +130,18 @@ tbody tr:nth-child(even) {
     padding-top: 5px;
 }
 
+#costMonthly {
+    padding-right: 5px;
+}
+
 .redBackground {
     background-color: red;
 }
 
 .darkBackground {
     background-color: rgb(15, 161, 251);
+}
+
+.monthlyText {
+    padding-right: 10px;
 }
