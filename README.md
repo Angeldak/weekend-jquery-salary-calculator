@@ -7,7 +7,7 @@ This project takes in employee information and does a monthly payroll cost calcu
 
 Employees can be added by both admin and regular users.  While it does require admin access to delete employee information.
 
-With features like "press enter to submit" and validation checks on both missing information and duplicate employee ID's, this project can help manage even the most untidy of employee lists!
+With features like "press enter to submit", clicking table header to sort, and validation checks on both missing information and duplicate employee ID's, this project can help manage even the most untidy of employee lists!
 
 ## Installation
 1. On Github select the green "Code" button and copy this repo per your desired method. (We will assume SSH.  You also must fork first if you would like to make your own edits.)
