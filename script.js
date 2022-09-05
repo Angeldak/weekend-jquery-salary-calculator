@@ -2,6 +2,7 @@
 $(onReady)
 
 let employeeList = [];
+let currentSort = [];
 let isAdmin = false;
 
 // fortmatter for dollar values
@@ -13,9 +14,9 @@ const formatCur = new Intl.NumberFormat("en-US", {
 })
 
 // Begin function to append employeeList to the DOM
-function appendDom() {
+function appendDom(array = employeeList) {
     $("#tableBody").empty();
-    for (const employee of employeeList) {
+    for (const employee of array) {
         $("#tableBody").append(`
         <tr>
             <td>${employee.firstName}</td>
@@ -27,7 +28,7 @@ function appendDom() {
         </tr>
         `);
     }
-    let currentMonthly = calculateTotalMonthly(employeeList);
+    let currentMonthly = calculateTotalMonthly(array);
     $("#costMonthly").text(`${formatCur.format(currentMonthly)}`);
 
     // Apply red styling to monthly if exceeds 20,000
@@ -143,6 +144,30 @@ function processEmployeeInfo() {
     }
 }  // end processEmployeeInfo
 
+function sortEmployees(array, sort, direction) {
+    if (direction === ">") {
+        currentSort = array.sort((currentEE, nextEE) => {
+            if (sort === "annualSalary") {
+                return Number(nextEE[sort]) > Number(currentEE[sort]) ? 1 : -1;
+            } else {
+                return nextEE[sort].toLowerCase() > currentEE[sort].toLowerCase() ? 1 : -1;
+            }
+        });
+        return currentSort;
+    } else if (direction === "<") {
+        currentSort = array.sort((currentEE, nextEE) => {
+            if (sort === "annualSalary") {
+                return Number(nextEE[sort]) < Number(currentEE[sort]) ? 1 : -1;
+            } else {
+                return nextEE[sort].toLowerCase() < currentEE[sort].toLowerCase() ? 1 : -1;
+            }
+        });
+        return currentSort;
+    } else {
+        return array;
+    }
+}
+
 // Begin function to attach event handlers
 function eventHandlers() {
     $("#addEmployeeBtn").on("click", processEmployeeInfo);
@@ -154,6 +179,17 @@ function eventHandlers() {
     });
     $("#tableBody").on("click", ".deleteBtn", deleteEmployee);
     $("#adminBtn").on("click", adminFunctions);
+    $("thead").on("click", "td", (event) => {
+        if ($(event.target).hasClass("greater")) {
+            sortEmployees(employeeList, event.target.id.slice(0, -5), "<");
+            $(event.target).removeClass("greater");
+            appendDom(currentSort);
+        } else {
+            sortEmployees(employeeList, event.target.id.slice(0, -5), ">");
+            $(event.target).addClass("greater");
+            appendDom(currentSort);
+        }
+    });
 }  // end eventHandlers
 
 // jQuery onReady
